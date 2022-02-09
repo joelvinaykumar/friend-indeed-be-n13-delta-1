@@ -9,6 +9,9 @@ import { CategoryModule } from './category/category.module';
 import { BookingModule } from './booking/booking.module';
 import { PatientModule } from './patient/patient.module';
 import { SubscriptionModule } from './subscription/subscription.module';
+import { RazorpayModule } from 'nestjs-razorpay';
+import { PaymentModule } from './payment/payment.module';
+import { AuthModule } from './auth/auth.module';
 @Module({
   imports: [
     ThrottlerModule.forRoot({
@@ -16,6 +19,7 @@ import { SubscriptionModule } from './subscription/subscription.module';
       limit: 50,
     }),
     TherapistModule,
+    AuthModule,
     FeedbackModule,
     CategoryModule,
     BookingModule,
@@ -32,3 +36,8 @@ import { SubscriptionModule } from './subscription/subscription.module';
 })
 export class AppModule {
 }
+
+
+
+
+
