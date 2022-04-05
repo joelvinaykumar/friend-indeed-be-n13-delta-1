@@ -20,6 +20,7 @@ Table Therapist {
   categories TherapistCategories [not null]
   qualification String [not null]
   booking Booking [not null]
+  Treatment Treatment [not null]
 }
 
 Table TherapistCategories {
@@ -43,6 +44,7 @@ Table Patient {
   booking Booking [not null]
   subscriptionId String
   subscription Subscription
+  Treatment Treatment [not null]
 }
 
 Table Category {
@@ -87,10 +89,36 @@ Table Booking {
   orderId String [unique]
   patientId String [not null]
   therapistId String [not null]
+  treatmentId String [not null]
+  treatment Treatment [not null]
   patient Patient [not null]
   therapist Therapist [not null]
   createdAt DateTime [default: `now()`]
   updatedAt DateTime
+}
+
+Table Treatment {
+  id String [pk]
+  question1 String [not null]
+  bookingId String [not null]
+  from DateTime [not null]
+  to DateTime [not null]
+  patientId String [not null]
+  therapistId String [not null]
+  patient Patient [not null]
+  therapist Therapist [not null]
+  createdAt DateTime [default: `now()`]
+  updatedAt DateTime
+  Booking Booking [not null]
+  HabitProgress HabitProgress [not null]
+}
+
+Table HabitProgress {
+  id String [pk]
+  answer1 String [not null]
+  answeredAt DateTime [not null]
+  treatmentId String [not null]
+  treatment Treatment [not null]
 }
 
 Enum Status {
@@ -110,6 +138,14 @@ Ref: Feedback.patientId > Patient.id
 
 Ref: Feedback.therapistId > Therapist.id
 
+Ref: Booking.treatmentId > Treatment.id
+
 Ref: Booking.patientId > Patient.id
 
 Ref: Booking.therapistId > Therapist.id
+
+Ref: Treatment.patientId > Patient.id
+
+Ref: Treatment.therapistId > Therapist.id
+
+Ref: HabitProgress.treatmentId > Treatment.id
