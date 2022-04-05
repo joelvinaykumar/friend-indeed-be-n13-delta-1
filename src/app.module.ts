@@ -9,7 +9,6 @@ import { CategoryModule } from './category/category.module';
 import { BookingModule } from './booking/booking.module';
 import { PatientModule } from './patient/patient.module';
 import { RazorpayModule } from 'nestjs-razorpay';
-import { PaymentModule } from './payment/payment.module';
 import { AuthModule } from './auth/auth.module';
 @Module({
   imports: [
@@ -27,7 +26,6 @@ import { AuthModule } from './auth/auth.module';
     CategoryModule,
     BookingModule,
     PatientModule,
-    PaymentModule,
   ],
   providers: [
     {
