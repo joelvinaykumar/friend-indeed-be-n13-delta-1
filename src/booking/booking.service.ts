@@ -10,7 +10,7 @@ import { UpdateBookingDto } from './dto/update-booking.dto';
 export class BookingService {
   constructor(private prismaService: PrismaService) {}
 
-  async create(input: CreateBookingDto) {
+  async create(input: any) {
     try {
       return {
         data: await this.prismaService.booking.create({ data: { ...input } }),

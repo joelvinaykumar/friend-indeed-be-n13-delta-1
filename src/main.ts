@@ -22,7 +22,7 @@ async function bootstrap() {
   // Swagger API Documentation
   const options = new DocumentBuilder()
     .setTitle('Friend Indeed Backend')
-    .setDescription('APi Documentation')
+    .setDescription('API Documentation')
     .setVersion('1.0.0')
     .addBearerAuth()
     .build();
