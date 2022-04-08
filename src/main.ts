@@ -29,7 +29,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api-docs', app, document);
 
-  await app.listen(process.env.PORT || 5000, '127.0.0.1');
+  await app.listen(8080);
 }
 
 bootstrap();
